@@ -1,4 +1,6 @@
-FROM openjdk:8-alpine
+FROM  maven:3-eclipse-temurin-8-alpine     as maven
+COPY . .
+RUN mvn clean package
 
 # Required for starting application up.
 RUN apk update && apk add /bin/sh
@@ -6,7 +8,7 @@ RUN apk update && apk add /bin/sh
 RUN mkdir -p /opt/app
 ENV PROJECT_HOME /opt/app
 
-COPY target/spring-boot-mongo-1.0.jar $PROJECT_HOME/spring-boot-mongo.jar
+COPY --from=maven target/spring-boot-mongo-1.0.jar $PROJECT_HOME/spring-boot-mongo.jar
 
 WORKDIR $PROJECT_HOME
 EXPOSE 8080
