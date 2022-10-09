@@ -1,4 +1,4 @@
-FROM  maven:3-eclipse-temurin-8-alpine     as maven
+FROM  maven:3-eclipse-temurin-8-alpine   as maven
 COPY . .
 RUN mvn clean package
 
@@ -12,4 +12,4 @@ COPY --from=maven target/spring-boot-mongo-1.0.jar $PROJECT_HOME/spring-boot-mon
 
 WORKDIR $PROJECT_HOME
 EXPOSE 8080
-CMD ["java" ,"-jar","./spring-boot-mongo.jar"]
+CMD ["java" ,"-jar","$PROJECT_HOME/spring-boot-mongo.jar"]
