@@ -16,7 +16,7 @@ services:
     networks:
     - springappnetwork  
     deploy:  # This will be considered only in docker swarm.
-      replicas: 2
+      replicas: 4
       update_config:
         parallelism: 1
         delay: 20s
