@@ -23,7 +23,7 @@ spec:
                 image: manikantanukala/spring-mongo-app:IMAGE_TAG
                 ports:
                  - name : springappport
-                    containerPort: 8080
+                   containerPort: 8080
                 resources:
                    requests:
                        cpu: 200m
