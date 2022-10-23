@@ -22,7 +22,8 @@ spec:
               - name: springapp
                 image: manikantanukala/spring-mongo-app:IMAGE_TAG
                 ports:
-                 - containerPort: 8080
+                 - name : springappport
+                    containerPort: 8080
                 resources:
                    requests:
                        cpu: 200m
@@ -34,9 +35,9 @@ spec:
                  - name: MONGO_DB_HOSTNAME
                    value: mongoservice
                  - name: MONGO_DB_USERNAME
-                   value: db
+                   value: dbuser
                  - name: MONGO_DB_PASSWORD
-                   value: db@123
+                   value: db@pass
 
 ---
 apiVersion: v1
@@ -50,7 +51,7 @@ spec:
            app: springapp
      ports:
       - port: 80
-        targetPort: 8080
+        targetPort: springappport
 
 ---
 apiVersion: apps/v1
@@ -81,9 +82,9 @@ spec:
                             memory: 512Mi
                    env:
                     - name: MONGO_INITDB_ROOT_USERNAME
-                      value: db
+                      value: dbuser
                     - name: MONGO_INITDB_ROOT_PASSWORD
-                      value: db@123
+                      value: db@pass
 
 
 ---
