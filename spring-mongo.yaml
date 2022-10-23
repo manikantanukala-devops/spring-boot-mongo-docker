@@ -15,7 +15,7 @@ spec:
          spec:
             containers:
               - name: springapp
-                image: manikantanukala/spring-boot-mongo-app:1
+                image: manikantanukala/spring-boot-mongo-app:IMAGE_TAG
                 ports:
                  - containerPort: 8080
                 resources:
